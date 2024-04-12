@@ -1,1 +1,1 @@
-export const REGISTER_EMAIL="api/users/register-email/"
+export const REGISTER_EMAIL="api/users/register/"
