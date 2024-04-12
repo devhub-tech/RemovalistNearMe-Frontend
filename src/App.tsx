@@ -1,25 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import ScrollToTop from "react-scroll-to-top";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import RouteScrollToTop from "./elements/RouteScrollToTop";
+import HomeTwo from "./screens/HomeTwo";
+import About from "./screens/About";
+import Service from "./screens/Service";
+import ServiceDetails from "./screens/ServiceDetails";
+import Blog from "./screens/Blog";
+import BlogDetails from "./screens/BlogDetails";
+import Pricing from "./screens/Pricing";
+import Faq from "./screens/Faq";
+import Contact from "./screens/Contact";
+import "./App.css";
+import Login from "./screens/Login";
+import Signup from "./screens/Signup";
+import GetQuote from "./screens/GetQuote";
 
 function App() {
+  useEffect(() => {
+    AOS.init({
+      offset: 0,
+      easing: "ease",
+      once: true,
+    });
+    AOS.refresh();
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <RouteScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomeTwo />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/service" element={<Service />} />
+        <Route path="/service-details" element={<ServiceDetails />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog-details" element={<BlogDetails />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/get-quote" element={<GetQuote />} />
+        <Route path="/signin" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+      <ScrollToTop smooth color="#FA4318" />
+    </BrowserRouter>
   );
 }
 
