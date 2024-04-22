@@ -9,3 +9,16 @@ export interface RegisterWithEmailPayload{
     password: string,
     registration_method: string
 }
+
+export interface LoginPayload{
+    username: string,
+    password: string
+}
+
+export interface LoginInitialState{
+    loading: boolean,
+    token: string,
+    userInfo: any
+    error: any
+    success: boolean,
+}

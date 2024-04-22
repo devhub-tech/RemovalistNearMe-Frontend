@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { FaCalculator, FaSignInAlt } from "react-icons/fa";
+import { FaCalculator, FaMobileAlt, FaSignInAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { AppDispatch, RootState } from "../redux/store/store";
@@ -42,7 +42,7 @@ const Signup = () => {
             >
               <h3>CREATE AN ACCOUNT</h3>
               <div className="row">
-                <div className="col-md-10">
+                <div className="col-md-12">
                   <div className="single-input-inner">
                     <label>
                       <FaSignInAlt />
@@ -54,8 +54,52 @@ const Signup = () => {
                     />
                   </div>
                 </div>
+                <div className="col-md-12">
+                  <div className="single-input-inner">
+                    <label>
+                      <FaMobileAlt />
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Your Phone Number"
+                      name="number"
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-2">
+                    <div className="single-input-inner">
+                      <input type="text" name="number" />
+                    </div>
+                  </div>
+                  <div className="col-md-2">
+                    <div className="single-input-inner">
+                      <input type="text" name="number" />
+                    </div>
+                  </div>
+                  <div className="col-md-2">
+                    <div className="single-input-inner">
+                      <input type="text" name="number" />
+                    </div>
+                  </div>
+                  <div className="col-md-2">
+                    <div className="single-input-inner">
+                      <input type="text" name="number" />
+                    </div>
+                  </div>
+                  <div className="col-md-2">
+                    <div className="single-input-inner">
+                      <input type="text" name="number" />
+                    </div>
+                  </div>
+                  <div className="col-md-2">
+                    <div className="single-input-inner">
+                      <input type="text" name="number" />
+                    </div>
+                  </div>
+                </div>
 
-                <div className="col-md-10">
+                <div className="col-md-12">
                   <div className="single-input-inner">
                     <label>
                       <FaCalculator />

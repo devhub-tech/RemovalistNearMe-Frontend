@@ -198,7 +198,7 @@ const NavbarTwo = () => {
                   />
                 </svg>
               </span> */}
-              <Link className="btn btn-base" to="/contact">
+              <Link className="btn btn-base" to="/get-quote">
                 <span></span> Get A Quote
               </Link>
             </div>
