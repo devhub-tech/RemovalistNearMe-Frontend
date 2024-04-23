@@ -103,7 +103,7 @@ const NavbarTwo = () => {
             >
               <ul className="navbar-nav menu-open text-end">
                 <li className="menu-item-has-children current-menu-item">
-                  <Link to="#">Services By Removalist Near Me</Link>
+                  <Link to="#">Services</Link>
                   <ul className="sub-menu">
                     <li>
                       <Link to="/">Removalist for Local Move</Link>
