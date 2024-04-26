@@ -21,12 +21,12 @@ export const registerWithEmailAction = createAsyncThunk(
       )
       return data
     } catch (error:any) {
-      console.log(error.response.data.message)
+      console.log(error.response)
     // return custom error message from backend if present
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message)
+      if (error.response && error.response.data.email) {
+        return rejectWithValue(error.response.data.email)
       } else {
-        return rejectWithValue(error.message)
+        return rejectWithValue(error.response)
       }
     }
   }   

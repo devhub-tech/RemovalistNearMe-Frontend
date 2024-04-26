@@ -1,5 +1,6 @@
 import React, { Fragment, Suspense } from "react";
 import Preloader from "../elements/Preloader";
+import NavbarOne from "../components/NavbarOne";
 const AboutTwo = React.lazy(() => import("../components/AboutTwo"));
 const BannerTwo = React.lazy(() => import("../components/BannerTwo"));
 const BlogTwo = React.lazy(() => import("../components/BlogTwo"));
@@ -29,7 +30,7 @@ const HomeTwo = () => {
           <SearchPopup />
 
           {/* Navbar Two */}
-          <NavbarTwo />
+          <NavbarOne />
 
           {/* Banner Two */}
           <BannerTwo />
@@ -53,7 +54,7 @@ const HomeTwo = () => {
           <RequestQuoteOne />
 
           {/* Pricing One */}
-          <PricingOne />
+          {/* <PricingOne /> */}
 
           {/* Testimonial Two */}
           <TestimonialTwo />
