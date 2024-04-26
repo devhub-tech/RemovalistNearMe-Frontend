@@ -17,6 +17,7 @@ import "./App.css";
 import Login from "./screens/Login";
 import Signup from "./screens/Signup";
 import GetQuote from "./screens/GetQuote";
+import Auth from "./screens/Auth";
 
 function App() {
   useEffect(() => {
@@ -41,7 +42,7 @@ function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/get-quote" element={<GetQuote />} />
-        <Route path="/signin" element={<Login />} />
+        <Route path="/signin" element={<Auth />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
       <ScrollToTop smooth color="#FA4318" />
