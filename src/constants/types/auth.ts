@@ -22,3 +22,26 @@ export interface LoginInitialState{
     error: any
     success: boolean,
 }
+
+export interface SendOtpState{
+    loading:boolean,
+    data: string,
+    error: any,
+    success: boolean
+}
+
+export interface SendOtpPayload{
+    phone_number: string
+}
+
+export interface VerifyOtpState{
+    loading:boolean,
+    data: string,
+    error: any,
+    success: boolean
+}
+
+export interface VerifyOtpPayload{
+    phone_number: string
+    otp: string,
+}
