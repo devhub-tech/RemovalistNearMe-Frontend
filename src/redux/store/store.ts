@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import clickActionReducer from "../stateSlice/clickActionSlice";
 import registerWithEmailReducer from "../slice/authSlice/RegisterWithEmailSlice"
 import loginReducer from "../slice/authSlice/LoginSlice"
+import sendOtpReducer from "../slice/authSlice/SendOtpSlice"
+import verifyOtpReducer from "../slice/authSlice/VerifyOtpSlice"
 const store = configureStore({
   reducer: {
-    clickAction: clickActionReducer,
     registerEmail: registerWithEmailReducer,
-    login: loginReducer
+    login: loginReducer,
+    sendOtp: sendOtpReducer,
+    verifyOtp: verifyOtpReducer,
   },
 });
 // Infer the `RootState` and `AppDispatch` types from the store itself
