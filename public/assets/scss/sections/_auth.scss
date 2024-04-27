@@ -217,3 +217,27 @@ form {
   height: 40px;
   width: 40px;
 }
+
+.auth_verify_otp {
+  width: 85%;
+  text-align: right;
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.error_input {
+  border: 1px solid red;
+}
+.error_auth {
+  color: red;
+  width: 70%;
+  text-align: right;
+}
+
+.flex_container {
+  margin-inline: 100px;
+  display: flex;
+  gap: 10px;
+}
