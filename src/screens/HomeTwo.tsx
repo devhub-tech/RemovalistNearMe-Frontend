@@ -20,14 +20,14 @@ const ServiceTwo = React.lazy(() => import("../components/ServiceTwo"));
 const TestimonialTwo = React.lazy(() => import("../components/TestimonialTwo"));
 const VideoAreaOne = React.lazy(() => import("../components/VideoAreaOne"));
 const WhyChooseUsTwo = React.lazy(() => import("../components/WhyChooseUsTwo"));
-const SearchPopup = React.lazy(() => import("../elements/SearchPopup"));
+// const SearchPopup = React.lazy(() => import("../elements/SearchPopup"));
 const HomeTwo = () => {
   return (
     <>
       <Fragment>
         <Suspense fallback={<Preloader />}>
           {/* Search Popup */}
-          <SearchPopup />
+          {/* <SearchPopup /> */}
 
           {/* Navbar Two */}
           <NavbarOne />

@@ -9,14 +9,14 @@ const FooterOne = React.lazy(() => import("../components/FooterOne"));
 const NavbarOne = React.lazy(() => import("../components/NavbarOne"));
 const PartnerOne = React.lazy(() => import("../components/PartnerOne"));
 const ServiceOneAll = React.lazy(() => import("../components/ServiceOneAll"));
-const SearchPopup = React.lazy(() => import("../elements/SearchPopup"));
+// const SearchPopup = React.lazy(() => import("../elements/SearchPopup"));
 const Service = () => {
   return (
     <>
       <Fragment>
         <Suspense fallback={<Preloader />}>
           {/* Search Popup */}
-          <SearchPopup />
+          {/* <SearchPopup /> */}
 
           {/* Navbar One */}
           <NavbarOne />

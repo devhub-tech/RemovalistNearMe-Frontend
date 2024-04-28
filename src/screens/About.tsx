@@ -13,14 +13,14 @@ const SkillOne = React.lazy(() => import("../components/SkillOne"));
 const TeamOne = React.lazy(() => import("../components/TeamOne"));
 const TestimonialTwo = React.lazy(() => import("../components/TestimonialTwo"));
 const VideoAreaOne = React.lazy(() => import("../components/VideoAreaOne"));
-const SearchPopup = React.lazy(() => import("../elements/SearchPopup"));
+// const SearchPopup = React.lazy(() => import("../elements/SearchPopup"));
 const About = () => {
   return (
     <>
       <Fragment>
         <Suspense fallback={<Preloader />}>
           {/* Search Popup */}
-          <SearchPopup />
+          {/* <SearchPopup /> */}
 
           {/* Navbar One */}
           <NavbarOne />

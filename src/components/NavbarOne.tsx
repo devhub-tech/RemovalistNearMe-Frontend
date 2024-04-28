@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { SetSearchPopUp } from "../redux/stateSlice/clickActionSlice";
+// import { SetSearchPopUp } from "../redux/stateSlice/clickActionSlice";
 import store from "../redux/store/store";
 
 const NavbarOne = () => {
@@ -188,7 +188,7 @@ const NavbarOne = () => {
                   </ul>
                 </li>
                 <li>
-                  <Link to="/about">Backloading Services</Link>
+                  <Link to="/about">Interstate Services</Link>
                 </li>
                 {/* <li className="menu-item-has-children">
                   <Link to="#">Services</Link>
