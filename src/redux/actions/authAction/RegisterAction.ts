@@ -1,13 +1,13 @@
 
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { RegisterWithEmailPayload } from '../../../constants/types/auth'
 import { axiosInstance } from '../../../api/axios/axiosInstance'
 import { REGISTER_EMAIL } from '../../../constants/api'
+import { RegisterPayload } from '../../../constants/types/auth'
 
 
-export const registerWithEmailAction = createAsyncThunk(
+export const registerAction = createAsyncThunk(
   'auth/register',
-  async ({email, password, registration_method }: RegisterWithEmailPayload , { rejectWithValue }) => {
+  async ({email, password, phone_number }: RegisterPayload , { rejectWithValue }) => {
     try {
       const config = {
         headers: {
@@ -16,7 +16,7 @@ export const registerWithEmailAction = createAsyncThunk(
       }
       const {data}= await axiosInstance.post(
         REGISTER_EMAIL,
-        { email, password, registration_method},
+        { email, password, phone_number},
         config
       )
       return data

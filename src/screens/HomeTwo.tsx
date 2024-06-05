@@ -1,6 +1,8 @@
 import React, { Fragment, Suspense } from "react";
 import Preloader from "../elements/Preloader";
 import NavbarOne from "../components/NavbarOne";
+import Modal from "../components/Modal";
+import Login from "../components/Login";
 const AboutTwo = React.lazy(() => import("../components/AboutTwo"));
 const BannerTwo = React.lazy(() => import("../components/BannerTwo"));
 const BlogTwo = React.lazy(() => import("../components/BlogTwo"));
@@ -26,6 +28,13 @@ const HomeTwo = () => {
     <>
       <Fragment>
         <Suspense fallback={<Preloader />}>
+          {/* <Modal
+            outerClassName={""}
+            visible={true}
+            onClose={() => console.log(false)}
+          >
+            <Login />
+          </Modal> */}
           {/* Search Popup */}
           {/* <SearchPopup /> */}
 

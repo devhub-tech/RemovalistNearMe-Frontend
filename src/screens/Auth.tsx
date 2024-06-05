@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SignInForm from "../components/SignInForm";
 import SignUpForm from "../components/SignUpForm";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store/store";
 
 export default function App() {
-  const [type, setType] = useState("signIn");
+  const {
+    // error: registerError,
+    // loading: registerLoading,
+    success: registerSuccess,
+    // userInfo,
+  } = useSelector((state: RootState) => state.registerEmail);
+  const [type, setType] = useState<string>("signIn");
   const handleOnClick = (text) => {
     if (text !== type) {
       setType(text);
@@ -12,11 +20,18 @@ export default function App() {
   };
   const containerClass =
     "container " + (type === "signUp" ? "right-panel-active" : "");
+
+  useEffect(() => {
+    if (registerSuccess) {
+      setType("signIn");
+    }
+  }, [registerSuccess]);
+
   return (
     <div className="App">
       <div className={containerClass} id="container">
-        <SignUpForm />
-        <SignInForm />
+        <SignUpForm type={type} setType={setType} />
+        <SignInForm type={type} setType={setType} />
         <div className="overlay-container">
           <div className="overlay">
             <div className="overlay-panel overlay-left">

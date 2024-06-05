@@ -1,14 +1,14 @@
 
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { LoginPayload } from '../../../constants/types/auth'
+import { VerifyOtpPayload } from '../../../constants/types/auth'
 import { axiosInstance } from '../../../api/axios/axiosInstance'
-import { LOGIN, REGISTER_EMAIL } from '../../../constants/api'
+import { VERIFY_OTP } from '../../../constants/api'
 
 
-export const LoginAction = createAsyncThunk(
-  'auth/login',
-  async ({username, password }: LoginPayload , { rejectWithValue }) => {
-    console.log(username,password)
+export const verifyOtpAction = createAsyncThunk(
+  'auth/verfiyOtp',
+  async ({phone_number,otp}: VerifyOtpPayload , { rejectWithValue }) => {
+    console.log(phone_number,otp)
     try {
       const config = {
         headers: {
@@ -16,8 +16,8 @@ export const LoginAction = createAsyncThunk(
         },
       }
       const {data}= await axiosInstance.post(
-        LOGIN,
-        { username, password},
+        VERIFY_OTP,
+        {phone_number,otp},
         config
       )
       return data

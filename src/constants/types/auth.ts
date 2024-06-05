@@ -1,13 +1,13 @@
-export interface RegisterWithEmailInitialState{
+export interface RegisterInitialState{
     loading: boolean,
     userInfo:any,
     error: any
     success: boolean,
 }
-export interface RegisterWithEmailPayload{
+export interface RegisterPayload{
     email: string,
     password: string,
-    registration_method: string
+    phone_number: string
 }
 
 export interface LoginPayload{

@@ -1,8 +1,8 @@
 import React, { Fragment, Suspense } from "react";
 import Preloader from "../elements/Preloader";
-import GetQuoteCards from "../components/GetQuoteCards";
+import Catalog from "../components/Catalog";
+import { destinations } from "../scripts/categories";
 const Breadcrumb = React.lazy(() => import("../components/Breadcrumb"));
-const ContactInner = React.lazy(() => import("../components/ContactInner"));
 const FooterBottomOne = React.lazy(
   () => import("../components/FooterBottomOne")
 );
@@ -27,7 +27,10 @@ const GetQuote = () => {
           />
 
           {/* Get Quote Cards */}
-          <GetQuoteCards />
+          {/* <GetQuoteCards /> */}
+          <div className="container pd-top-115 pd-bottom-90">
+            <Catalog items={destinations} />
+          </div>
 
           {/* Footer One */}
           <FooterOne />

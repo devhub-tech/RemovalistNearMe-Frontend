@@ -1,31 +1,31 @@
 // features/auth/authSlice.js
 import { createSlice } from '@reduxjs/toolkit'
-import { RegisterWithEmailInitialState } from '../../../constants/types/auth'
-import { registerWithEmailAction } from '../../actions/authAction/RegisterWithEmailAction'
+import { RegisterInitialState } from '../../../constants/types/auth'
+import { registerAction } from '../../actions/authAction/RegisterAction'
 
-const initialState:RegisterWithEmailInitialState = {
+const initialState:RegisterInitialState = {
   loading: false,
   userInfo: {}, // for user object
   error: null,
   success: false, // for monitoring the registration process.
 }
 
-const registerWithEmailSlice = createSlice({
-  name: 'registerEmail',
+const registerSlice = createSlice({
+  name: 'register',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(registerWithEmailAction.pending, (state) => {
+    builder.addCase(registerAction.pending, (state) => {
       state.loading = true;
       state.error = null;
     });
-    builder.addCase(registerWithEmailAction.fulfilled, (state, action) => {
+    builder.addCase(registerAction.fulfilled, (state, action) => {
       console.log(action)
       state.loading = false;
       state.success= true;
       state.userInfo = action.payload;
     });
-    builder.addCase(registerWithEmailAction.rejected, (state, action) => {
+    builder.addCase(registerAction.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload
       state.success= false;
@@ -33,4 +33,4 @@ const registerWithEmailSlice = createSlice({
   },
 })
 
-export default registerWithEmailSlice.reducer
+export default registerSlice.reducer
