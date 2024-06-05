@@ -1,19 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AppDispatch, RootState } from "../redux/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { ClipLoader } from "react-spinners";
-function SignInForm() {
+import { LoginPayload } from "../constants/types/auth";
+import { LoginAction } from "../redux/actions/authAction/LoginAction";
+
+function SignInForm({
+  type,
+  setType,
+}: {
+  type: string;
+  setType: React.Dispatch<React.SetStateAction<string>>;
+}) {
   const dispatch = useDispatch<AppDispatch>();
   const { error, loading, success, token, userInfo } = useSelector(
     (state: RootState) => state.login
   );
 
   const [state, setState] = React.useState({
-    email: "",
+    username: "",
     password: "",
   });
+  useEffect(() => {
+    if (type === "signUp") {
+      setState((prevState) => ({
+        username: "",
+        password: "",
+      }));
+    }
+  }, [type]);
+
   const [errors, setErrors] = React.useState({
-    emailError: "",
+    usernameError: "",
     passwordError: "",
   });
   const handleChange = (evt) => {
@@ -26,11 +44,17 @@ function SignInForm() {
 
   const handleOnSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    if (!state.email || !state.password) {
-      setErrors((prevState) => ({
-        emailError: state.email ? "" : "Email cannot be empty",
-        passwordError: state.password ? "" : "Password cannot be empty",
-      }));
+    if (!state.username || !state.password) {
+      // setErrors((prevState) => ({
+      //   usernameError: state.username ? "" : "Email cannot be empty",
+      //   passwordError: state.password ? "" : "Password cannot be empty",
+      // }));
+    } else {
+      const payload: LoginPayload = {
+        username: state.username,
+        password: state.password,
+      };
+      dispatch(LoginAction(payload));
     }
   };
 
@@ -52,15 +76,15 @@ function SignInForm() {
         <span className="span_auth">or use your account</span>
 
         <input
-          className={`auth_input ${errors.emailError}`}
-          type="email"
+          className={`auth_input ${errors.usernameError}`}
+          type="text"
           placeholder="Enter email or phone number"
-          name="email"
-          value={state.email}
+          name="username"
+          value={state.username || ""}
           onChange={handleChange}
         />
-        {errors.emailError ? (
-          <span className="span_auth error_auth">{errors.emailError}</span>
+        {errors.usernameError ? (
+          <span className="span_auth error_auth">{errors.usernameError}</span>
         ) : (
           ""
         )}
@@ -69,7 +93,7 @@ function SignInForm() {
           type="password"
           name="password"
           placeholder="Enter password"
-          value={state.password}
+          value={state.password || ""}
           onChange={handleChange}
         />
         {errors.passwordError ? (
