@@ -14,10 +14,9 @@ import Pricing from "./screens/Pricing";
 import Faq from "./screens/Faq";
 import Contact from "./screens/Contact";
 import "./App.css";
-import Login from "./screens/Login";
-import Signup from "./screens/Signup";
 import GetQuote from "./screens/GetQuote";
 import Auth from "./screens/Auth";
+import MovingLocal from "./screens/MovingLocal";
 
 function App() {
   useEffect(() => {
@@ -43,7 +42,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/get-quote" element={<GetQuote />} />
         <Route path="/signin" element={<Auth />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/moving-local" element={<MovingLocal />} />
       </Routes>
       <ScrollToTop smooth color="#FA4318" />
     </BrowserRouter>

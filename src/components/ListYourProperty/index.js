@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import cn from "classnames";
 import styles from "./ListYourProperty.module.sass";
-import Control from "../../components/Control";
 import Dropdown from "../../components/Dropdown";
 import Icon from "../../components/Icon";
 import TextInput from "../../components/TextInput";
 import TextArea from "../../components/TextArea";
 import Checkbox from "../Checkbox";
-import DateRange from "../DateRange";
-import Counter from "../Counter";
+import DateSingle from "../DateSingle/DateSingle";
+import DateRange from "../DateRange/DateRange";
 
 // import Loader from "../../components/Loader";
 // import Preview from "./Preview";
@@ -39,18 +38,36 @@ const propertyTypeOptions = [
   "Storage Facility",
   "Commercial Property",
 ];
-const moveOptions = ["Urgent", "On", "Before", "On or before"];
+const moveOptions = ["Urgent", "On", "Between", "On or before"];
 const serviceLevelOptions = ["Budget", "Affordable", "Premium"];
 const livingRoomOptions = ["1", "2", "3", "4"];
 const kitchenOptions = ["1", "2", "3", "4"];
 const unitsOptions = ["%", "$", "€"];
 const currencyOptions = ["$ USD", "€ EUR"];
 const timeOptions = ["per Night", "per Day", "per Week"];
+const rooms = [
+  { name: "Bedrooms", number: "One" },
+  { name: "Kitchen", number: "Two" },
+  { name: "Dining Room / Meal Area", number: "Three" },
+  { name: "Lounge / Family Rooms", number: "Four" },
+  { name: "Study / Home Office", number: "Five" },
+  { name: "Laundry", number: "Six" },
+  { name: "Garden / Outdoor", number: "Seven" },
+  { name: "Garage / Shed", number: "Eight" },
+  { name: "Boxes / Bags", number: "Nine" },
+  { name: "Hall / Entry", number: "Ten" },
+  { name: "Fitness / Gym Equipment", number: "Eleven" },
+  { name: "Additional Items", number: "Twelve" },
+];
 
 const Upload = () => {
   const [propertyType, setPropertyType] = useState(propertyTypeOptions[0]);
   const [serviceLevel, setServiceLevel] = useState(serviceLevelOptions[0]);
   const [moveTime, setMoveTime] = useState(moveOptions[0]);
+  const [on, setOn] = useState(new Date());
+  const [onBefore, setOnBefore] = useState(new Date());
+  const [dateRange, setDateRange] = useState([null, null]);
+  const [startDate, endDate] = dateRange;
 
   const [bedRoom, setBedRoom] = useState(bedRoomOptions[0]);
   const [livingRoom, setLivingRoom] = useState(livingRoomOptions[0]);
@@ -186,6 +203,51 @@ const Upload = () => {
                       Please click on each room / area below and select the
                       items you will be moving.
                     </div>
+                    <div
+                      className="accordion faq-accordion"
+                      id="accordionExample"
+                    >
+                      {rooms.map((room) => {
+                        return (
+                          <div
+                            key={room.name}
+                            className="accordion-item single-accordion-inner"
+                          >
+                            <h2
+                              className="accordion-header"
+                              id={`heading${room.number}`}
+                            >
+                              <button
+                                className="accordion-button collapsed" // Add 'collapsed' class to button
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target={`#collapse${room.number}`}
+                                aria-expanded="false" // Change aria-expanded to false
+                                aria-controls={`collapse${room.number}`}
+                              >
+                                {room.name}
+                              </button>
+                            </h2>
+                            <div
+                              id={`collapse${room.number}`}
+                              className="accordion-collapse collapse" // Remove 'show' class
+                              aria-labelledby={`heading${room.number}`}
+                              data-bs-parent="#accordionExample"
+                            >
+                              <div className="accordion-body">
+                                A removalist is a company that specialises in
+                                helping people move their belongings from one
+                                location to another. They provide a range of
+                                services, including packing, loading,
+                                transportation, unloading, and unpacking. Some
+                                removalists may also offer additional services,
+                                such as storage solutions or pet transport.
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
 
                   <div className={styles.item}>
@@ -202,16 +264,38 @@ const Upload = () => {
                           options={moveOptions}
                         />
                       </div>
-                      {moveTime === "Urgent" && (
+                      {moveTime === "On" && (
                         <div className={cn(styles.col, styles.w33)}>
-                          <DateRange
-                            className={styles.date}
-                            icon="calendar"
-                            description="Add date"
-                            startDatePlaceholderText="Check in"
-                            endDatePlaceholderText="Check out"
-                            displayFormat="MMM DD, YYYY"
-                          />
+                          <div className={styles.line}>
+                            <div className={styles.cell}>
+                              <DateSingle startDate={on} setStartDate={setOn} />
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {moveTime === "Between" && (
+                        <div className={cn(styles.col, styles.w33)}>
+                          <div className={styles.line}>
+                            <div className={styles.cell}>
+                              <DateRange
+                                setDateRange={setDateRange}
+                                startDate={startDate}
+                                endDate={endDate}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {moveTime === "On or before" && (
+                        <div className={cn(styles.col, styles.w33)}>
+                          <div className={styles.line}>
+                            <div className={styles.cell}>
+                              <DateSingle
+                                startDate={onBefore}
+                                setStartDate={setOnBefore}
+                              />
+                            </div>
+                          </div>
                         </div>
                       )}
                     </div>
