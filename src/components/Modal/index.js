@@ -4,7 +4,7 @@ import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 import OutsideClickHandler from "react-outside-click-handler";
 import cn from "classnames";
 import styles from "./Modal.module.sass";
-// import Icon from "../Icon";
+import Icon from "../Icon";
 
 const Modal = ({ outerClassName, visible, onClose, children }) => {
   const escFunction = useCallback(
@@ -39,7 +39,7 @@ const Modal = ({ outerClassName, visible, onClose, children }) => {
           <OutsideClickHandler onOutsideClick={onClose}>
             {children}
             <button className={styles.close} onClick={onClose}>
-              {/* <Icon name="close" size="24" /> */}
+              <Icon name="close" size="24" />
             </button>
           </OutsideClickHandler>
         </div>

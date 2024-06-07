@@ -5,12 +5,8 @@ import Dropdown from "../Dropdown";
 import Icon from "../Icon";
 import TextInput from "../TextInput";
 import TextArea from "../TextArea";
-import Checkbox from "../Checkbox";
 import DateSingle from "../DateSingle/DateSingle";
 import DateRange from "../DateRange/DateRange";
-import Accordian from "../Accordian/Accordian";
-import Modal from "../Modal";
-import { Link } from "react-router-dom";
 
 // import Loader from "../../components/Loader";
 // import Preview from "./Preview";
@@ -27,37 +23,17 @@ const propertyTypeOptions = [
   "Commercial Property",
 ];
 const moveOptions = ["Urgent", "On", "Between", "On or before"];
-const serviceLevelOptions = ["Budget", "Affordable", "Premium"];
 
 const rooms = [{ name: "Additional Items", number: "Twelve", items: [] }];
 
 console.log(rooms);
 const RubbishContent = () => {
   const [propertyType, setPropertyType] = useState(propertyTypeOptions[0]);
-  const [serviceLevel, setServiceLevel] = useState(serviceLevelOptions[0]);
   const [moveTime, setMoveTime] = useState(moveOptions[0]);
   const [on, setOn] = useState(new Date());
   const [onBefore, setOnBefore] = useState(new Date());
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
-
-  const [visible, setVisible] = useState(false);
-
-  const [roomItems, setRoomItems] = useState(rooms);
-
-  const incrementCount = (roomIndex, itemIndex) => {
-    const newRoomItems = [...roomItems];
-    newRoomItems[roomIndex].items[itemIndex].count += 1;
-    setRoomItems(newRoomItems);
-  };
-
-  const decrementCount = (roomIndex, itemIndex) => {
-    const newRoomItems = [...roomItems];
-    if (newRoomItems[roomIndex].items[itemIndex].count > 0) {
-      newRoomItems[roomIndex].items[itemIndex].count -= 1;
-    }
-    setRoomItems(newRoomItems);
-  };
 
   return (
     <>

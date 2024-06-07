@@ -17,6 +17,16 @@ import "./App.css";
 import GetQuote from "./screens/GetQuote";
 import Auth from "./screens/Auth";
 import MovingLocal from "./screens/MovingLocal";
+import RubbishRemoval from "./screens/RubbishRemoval";
+import MovingFragile from "./screens/MovingFragile";
+import Pickups from "./screens/Pickups";
+import MovingPool from "./screens/MovingPool";
+import MovingPiano from "./screens/MovingPiano";
+import MovingInterstate from "./screens/MovingInterstate";
+import MovingOffice from "./screens/MovingOffice";
+import MovingFurniture from "./screens/MovingFurniture";
+import MovingSingle from "./screens/MovingSingle";
+import MovingMore from "./screens/MovingMore";
 
 function App() {
   useEffect(() => {
@@ -43,6 +53,16 @@ function App() {
         <Route path="/get-quote" element={<GetQuote />} />
         <Route path="/signin" element={<Auth />} />
         <Route path="/moving-local" element={<MovingLocal />} />
+        <Route path="/moving-inter" element={<MovingInterstate />} />
+        <Route path="/moving-office" element={<MovingOffice />} />
+        <Route path="/moving-furniture" element={<MovingFurniture />} />
+        <Route path="/moving-single" element={<MovingSingle />} />
+        <Route path="/moving-more" element={<MovingMore />} />
+        <Route path="/moving-piano" element={<MovingPiano />} />
+        <Route path="/moving-pool" element={<MovingPool />} />
+        <Route path="/pickups" element={<Pickups />} />
+        <Route path="/moving-fragile" element={<MovingFragile />} />
+        <Route path="/rubbish" element={<RubbishRemoval />} />
       </Routes>
       <ScrollToTop smooth color="#FA4318" />
     </BrowserRouter>

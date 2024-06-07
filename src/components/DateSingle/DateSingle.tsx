@@ -10,6 +10,7 @@ const DateSingle = ({ startDate, setStartDate }) => {
       closeOnScroll={true}
       selected={startDate}
       onChange={(date) => setStartDate(date)}
+      dateFormat="MMMM d, yyyy"
     />
   );
 };
