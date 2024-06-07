@@ -1,7 +1,5 @@
 import React, { Fragment, Suspense } from "react";
 import Preloader from "../elements/Preloader";
-import Upload from "../components/MovingContent";
-import CommonContent from "../components/CommonContent";
 import RubbishContent from "../components/RubbishContent";
 const Breadcrumb = React.lazy(() => import("../components/Breadcrumb"));
 const FooterBottomOne = React.lazy(
