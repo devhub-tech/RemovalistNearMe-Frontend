@@ -11,6 +11,29 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 // import { SetSearchPopUp } from "../redux/stateSlice/clickActionSlice";
 import store from "../redux/store/store";
+import User from "./User";
+
+const items = [
+  {
+    menu: [
+      {
+        title: "My Account",
+        icon: "user",
+        url: "/user-settings",
+      },
+      {
+        title: "Change password",
+        icon: "lock",
+        url: "/user-settings",
+      },
+      {
+        title: "Logout",
+        icon: "arrow-next",
+        url: "/wishlists",
+      },
+    ],
+  },
+];
 
 const NavbarOne = () => {
   const [open, setOpen] = useState(false);
@@ -245,7 +268,8 @@ const NavbarOne = () => {
                   <Link to="/contact">For Vendors</Link>
                 </li>
                 <li>
-                  <Link to="/signin">Sign In</Link>
+                  {/* <Link to="/signin">Sign In</Link> */}
+                  <User items={items} />
                 </li>
               </ul>
             </div>

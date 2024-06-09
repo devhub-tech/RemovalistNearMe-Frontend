@@ -27,6 +27,8 @@ import MovingOffice from "./screens/MovingOffice";
 import MovingFurniture from "./screens/MovingFurniture";
 import MovingSingle from "./screens/MovingSingle";
 import MovingMore from "./screens/MovingMore";
+import AccountSettings from "./components/AccountSettings";
+import Settings from "./screens/Settings";
 
 function App() {
   useEffect(() => {
@@ -63,6 +65,7 @@ function App() {
         <Route path="/pickups" element={<Pickups />} />
         <Route path="/moving-fragile" element={<MovingFragile />} />
         <Route path="/rubbish" element={<RubbishRemoval />} />
+        <Route path="/user-settings" element={<Settings />} />
       </Routes>
       <ScrollToTop smooth color="#FA4318" />
     </BrowserRouter>
