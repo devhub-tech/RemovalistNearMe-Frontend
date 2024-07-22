@@ -9,33 +9,33 @@ const Accordian = ({ rooms, incrementCount, decrementCount }) => {
       {rooms.map((room, roomIndex) => {
         return (
           <div
-            key={room.name}
+            key={room.room_type?.name}
             className="accordion-item single-accordion-inner"
           >
-            <h2 className="accordion-header" id={`heading${room.number}`}>
+            <h2 className="accordion-header" id={`heading${roomIndex}`}>
               <button
                 className="accordion-button collapsed" // Add 'collapsed' class to button
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target={`#collapse${room.number}`}
+                data-bs-target={`#collapse${roomIndex}`}
                 aria-expanded="false" // Change aria-expanded to false
-                aria-controls={`collapse${room.number}`}
+                aria-controls={`collapse${roomIndex}`}
               >
-                {room.name}
+                {room.room_type?.name}
               </button>
             </h2>
             <div
-              id={`collapse${room.number}`}
+              id={`collapse${roomIndex}`}
               className="accordion-collapse collapse" // Remove 'show' class
-              aria-labelledby={`heading${room.number}`}
+              aria-labelledby={`heading${roomIndex}`}
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body">
-                {room.items?.map((r, itemIndex) => {
+                {room.inventory_items.map((item, itemIndex) => {
                   return (
                     <div className={styles.row}>
                       <div className={cn(styles.col, styles.w50)}>
-                        <div className={styles.category}>{r.name}</div>
+                        <div className={styles.category}>{item.item.name}</div>
                       </div>
 
                       <div className={cn(styles.col, styles.w50)}>
@@ -50,7 +50,7 @@ const Accordian = ({ rooms, incrementCount, decrementCount }) => {
                             </div>
                           </div>
                           <div className={cn(styles.col, styles.w33)}>
-                            {r.count}
+                            {item.quantity}
                           </div>
                           <div className={cn(styles.col, styles.w33)}>
                             <div
