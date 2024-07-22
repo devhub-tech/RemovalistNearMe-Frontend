@@ -27,96 +27,130 @@ const serviceLevelOptions = ["Budget", "Affordable", "Premium"];
 
 const rooms = [
   {
-    name: "Office",
-    number: "One",
-    items: [
+    room_type: {
+      name: "Office",
+    },
+    inventory_items: [
       {
-        name: "Boardroom Table - 10+ Seater",
-        count: 0,
-        volume_cubic_meters: 3.0,
+        item: {
+          name: "Boardroom Table - 10+ Seater",
+          volume_cubic_meters: "3.00",
+        },
+        quantity: 0,
         total_volume: 0,
       },
       {
-        name: "Boardroom Table - 4 Seater",
-        count: 0,
-        volume_cubic_meters: 1.5,
+        item: {
+          name: "Boardroom Table - 4 Seater",
+          volume_cubic_meters: "1.50",
+        },
+        quantity: 0,
         total_volume: 0,
       },
       {
-        name: "Boardroom Table - 6 Seater",
-        count: 0,
-        volume_cubic_meters: 2.0,
+        item: {
+          name: "Boardroom Table - 6 Seater",
+          volume_cubic_meters: "2.00",
+        },
+        quantity: 0,
         total_volume: 0,
       },
       {
-        name: "Boardroom Table - 8 Seater",
-        count: 0,
-        volume_cubic_meters: 2.5,
+        item: {
+          name: "Boardroom Table - 8 Seater",
+          volume_cubic_meters: "2.50",
+        },
+        quantity: 0,
         total_volume: 0,
       },
       {
-        name: "Bookshelf",
-        count: 0,
-        volume_cubic_meters: 0.8,
+        item: {
+          name: "Bookshelf",
+          volume_cubic_meters: "0.80",
+        },
+        quantity: 0,
         total_volume: 0,
       },
       {
-        name: "Corner Desk",
-        count: 0,
-        volume_cubic_meters: 1.2,
+        item: {
+          name: "Corner Desk",
+          volume_cubic_meters: "1.20",
+        },
+        quantity: 0,
         total_volume: 0,
       },
       {
-        name: "Desk - 2 Seater",
-        count: 0,
-        volume_cubic_meters: 1.5,
+        item: {
+          name: "Desk - 2 Seater",
+          volume_cubic_meters: "1.50",
+        },
+        quantity: 0,
         total_volume: 0,
       },
       {
-        name: "Desk - Corner",
-        count: 0,
-        volume_cubic_meters: 1.2,
+        item: {
+          name: "Desk - Corner",
+          volume_cubic_meters: "1.20",
+        },
+        quantity: 0,
         total_volume: 0,
       },
       {
-        name: "Desk - Single Seater",
-        count: 0,
-        volume_cubic_meters: 1.0,
+        item: {
+          name: "Desk - Single Seater",
+          volume_cubic_meters: "1.00",
+        },
+        quantity: 0,
         total_volume: 0,
       },
       {
-        name: "Executive Office Chair",
-        count: 0,
-        volume_cubic_meters: 0.4,
+        item: {
+          name: "Executive Office Chair",
+          volume_cubic_meters: "0.40",
+        },
+        quantity: 0,
         total_volume: 0,
       },
       {
-        name: "Filing Cabinet - 2 Drawer",
-        count: 0,
-        volume_cubic_meters: 0.5,
+        item: {
+          name: "Filing Cabinet - 2 Drawer",
+          volume_cubic_meters: "0.50",
+        },
+        quantity: 0,
         total_volume: 0,
       },
       {
-        name: "Filing Cabinet - 3 Drawer",
-        count: 0,
-        volume_cubic_meters: 0.7,
+        item: {
+          name: "Filing Cabinet - 3 Drawer",
+          volume_cubic_meters: "0.70",
+        },
+        quantity: 0,
         total_volume: 0,
       },
       {
-        name: "Filing Cabinet - 4 Drawer",
-        count: 0,
-        volume_cubic_meters: 0.9,
+        item: {
+          name: "Filing Cabinet - 4 Drawer",
+          volume_cubic_meters: "0.90",
+        },
+        quantity: 0,
         total_volume: 0,
       },
       {
-        name: "Whiteboard",
-        count: 0,
-        volume_cubic_meters: 0.3,
+        item: {
+          name: "Whiteboard",
+          volume_cubic_meters: "0.30",
+        },
+        quantity: 0,
         total_volume: 0,
       },
     ],
   },
-  { name: "Additional Items", number: "Twelve", items: [] },
+  {
+    room_type: {
+      name: "Additional Items",
+    },
+    inventory_items: [],
+  },
 ];
 
 const MovingOfficeContent = () => {
@@ -133,19 +167,21 @@ const MovingOfficeContent = () => {
   const [roomItems, setRoomItems] = useState(rooms);
 
   const incrementCount = (roomIndex, itemIndex) => {
-    const newRoomItems = [...rooms];
-    const item = newRoomItems[roomIndex].items[itemIndex];
-    item.count += 1;
-    item.total_volume = item.count * item.volume_cubic_meters; // Update total_volume
+    const newRoomItems = [...roomItems];
+    const item = newRoomItems[roomIndex].inventory_items[itemIndex];
+    item.quantity += 1;
+    item.total_volume =
+      item.quantity * parseFloat(item.item.volume_cubic_meters); // Update total_volume
     setRoomItems(newRoomItems);
   };
 
   const decrementCount = (roomIndex, itemIndex) => {
-    const newRoomItems = [...rooms];
-    const item = newRoomItems[roomIndex].items[itemIndex];
-    if (item.count > 0) {
-      item.count -= 1;
-      item.total_volume = item.count * item.volume_cubic_meters; // Update total_volume
+    const newRoomItems = [...roomItems];
+    const item = newRoomItems[roomIndex].inventory_items[itemIndex];
+    if (item.quantity > 0) {
+      item.quantity -= 1;
+      item.total_volume =
+        item.quantity * parseFloat(item.item.volume_cubic_meters); // Update total_volume
     }
     setRoomItems(newRoomItems);
   };
