@@ -1,3 +1,10 @@
+export interface QuoteInitialState {
+  loading: boolean;
+  info: any;
+  error: any;
+  success: boolean;
+}
+
 export interface QuotePayload {
   user: number;
   status?: string;
