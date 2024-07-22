@@ -3,7 +3,7 @@ import { axiosInstance } from "../../../api/axios/axiosInstance";
 import { CREATE_QUOTE } from "../../../constants/api";
 import { QuotePayload } from "../../../constants/types/quote";
 
-export const createAction = createAsyncThunk(
+export const createQuoteAction = createAsyncThunk(
   "quote/createQuote",
   async (
     {
