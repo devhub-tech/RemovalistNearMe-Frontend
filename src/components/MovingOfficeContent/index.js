@@ -34,38 +34,91 @@ const rooms = [
         name: "Boardroom Table - 10+ Seater",
         count: 0,
         volume_cubic_meters: 3.0,
+        total_volume: 0,
       },
       {
         name: "Boardroom Table - 4 Seater",
         count: 0,
         volume_cubic_meters: 1.5,
+        total_volume: 0,
       },
       {
         name: "Boardroom Table - 6 Seater",
         count: 0,
         volume_cubic_meters: 2.0,
+        total_volume: 0,
       },
       {
         name: "Boardroom Table - 8 Seater",
         count: 0,
         volume_cubic_meters: 2.5,
+        total_volume: 0,
       },
-      { name: "Bookshelf", count: 0, volume_cubic_meters: 0.8 },
-      { name: "Corner Desk", count: 0, volume_cubic_meters: 1.2 },
-      { name: "Desk - 2 Seater", count: 0, volume_cubic_meters: 1.5 },
-      { name: "Desk - Corner", count: 0, volume_cubic_meters: 1.2 },
-      { name: "Desk - Single Seater", count: 0, volume_cubic_meters: 1.0 },
-      { name: "Executive Office Chair", count: 0, volume_cubic_meters: 0.4 },
-      { name: "Filing Cabinet - 2 Drawer", count: 0, volume_cubic_meters: 0.5 },
-      { name: "Filing Cabinet - 3 Drawer", count: 0, volume_cubic_meters: 0.7 },
-      { name: "Filing Cabinet - 4 Drawer", count: 0, volume_cubic_meters: 0.9 },
-      { name: "Whiteboard", count: 0, volume_cubic_meters: 0.3 },
+      {
+        name: "Bookshelf",
+        count: 0,
+        volume_cubic_meters: 0.8,
+        total_volume: 0,
+      },
+      {
+        name: "Corner Desk",
+        count: 0,
+        volume_cubic_meters: 1.2,
+        total_volume: 0,
+      },
+      {
+        name: "Desk - 2 Seater",
+        count: 0,
+        volume_cubic_meters: 1.5,
+        total_volume: 0,
+      },
+      {
+        name: "Desk - Corner",
+        count: 0,
+        volume_cubic_meters: 1.2,
+        total_volume: 0,
+      },
+      {
+        name: "Desk - Single Seater",
+        count: 0,
+        volume_cubic_meters: 1.0,
+        total_volume: 0,
+      },
+      {
+        name: "Executive Office Chair",
+        count: 0,
+        volume_cubic_meters: 0.4,
+        total_volume: 0,
+      },
+      {
+        name: "Filing Cabinet - 2 Drawer",
+        count: 0,
+        volume_cubic_meters: 0.5,
+        total_volume: 0,
+      },
+      {
+        name: "Filing Cabinet - 3 Drawer",
+        count: 0,
+        volume_cubic_meters: 0.7,
+        total_volume: 0,
+      },
+      {
+        name: "Filing Cabinet - 4 Drawer",
+        count: 0,
+        volume_cubic_meters: 0.9,
+        total_volume: 0,
+      },
+      {
+        name: "Whiteboard",
+        count: 0,
+        volume_cubic_meters: 0.3,
+        total_volume: 0,
+      },
     ],
   },
   { name: "Additional Items", number: "Twelve", items: [] },
 ];
 
-console.log(rooms);
 const MovingOfficeContent = () => {
   const [propertyType, setPropertyType] = useState(propertyTypeOptions[0]);
   const [serviceLevel, setServiceLevel] = useState(serviceLevelOptions[0]);
@@ -80,18 +133,24 @@ const MovingOfficeContent = () => {
   const [roomItems, setRoomItems] = useState(rooms);
 
   const incrementCount = (roomIndex, itemIndex) => {
-    const newRoomItems = [...roomItems];
-    newRoomItems[roomIndex].items[itemIndex].count += 1;
+    const newRoomItems = [...rooms];
+    const item = newRoomItems[roomIndex].items[itemIndex];
+    item.count += 1;
+    item.total_volume = item.count * item.volume_cubic_meters; // Update total_volume
     setRoomItems(newRoomItems);
   };
 
   const decrementCount = (roomIndex, itemIndex) => {
-    const newRoomItems = [...roomItems];
-    if (newRoomItems[roomIndex].items[itemIndex].count > 0) {
-      newRoomItems[roomIndex].items[itemIndex].count -= 1;
+    const newRoomItems = [...rooms];
+    const item = newRoomItems[roomIndex].items[itemIndex];
+    if (item.count > 0) {
+      item.count -= 1;
+      item.total_volume = item.count * item.volume_cubic_meters; // Update total_volume
     }
     setRoomItems(newRoomItems);
   };
+
+  console.log(rooms);
 
   return (
     <>
