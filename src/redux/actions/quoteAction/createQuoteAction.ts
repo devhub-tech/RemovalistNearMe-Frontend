@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { axiosInstance } from "../../../api/axios/axiosInstance";
 import { CREATE_QUOTE } from "../../../constants/api";
 import { QuotePayload } from "../../../constants/types/quote";
+import { RootState } from "../../store/store";
 
 export const createQuoteAction = createAsyncThunk(
   "quote/createQuote",
@@ -22,14 +23,19 @@ export const createQuoteAction = createAsyncThunk(
       additional_services,
       other_details,
     }: QuotePayload,
-    { rejectWithValue }
+    { rejectWithValue, getState }
   ) => {
+    console.log("Email", email, user);
     try {
+      const token = localStorage.getItem("token");
+
       const config = {
         headers: {
           "Content-Type": "application/json",
+          Authorization: `token ${token}`,
         },
       };
+      console.log(config);
       const { data } = await axiosInstance.post(
         CREATE_QUOTE,
         {

@@ -2,7 +2,19 @@ import React from "react";
 import cn from "classnames";
 import styles from "./Checkbox.module.sass";
 
-const Checkbox = ({ className, content, note, value, onChange }) => {
+const Checkbox = ({
+  className,
+  content,
+  note,
+  value,
+  onChange,
+}: {
+  className?: any;
+  content?: any;
+  note?: any;
+  value?: any;
+  onChange?: any;
+}) => {
   return (
     <label className={cn(styles.checkbox, className)}>
       <input

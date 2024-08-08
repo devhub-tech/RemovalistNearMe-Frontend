@@ -268,8 +268,8 @@ const NavbarOne = () => {
                   <Link to="/contact">For Vendors</Link>
                 </li>
                 <li>
-                  {/* <Link to="/signin">Sign In</Link> */}
-                  <User items={items} />
+                  <Link to="/signin">Sign In</Link>
+                  {/* <User items={items} /> */}
                 </li>
               </ul>
             </div>

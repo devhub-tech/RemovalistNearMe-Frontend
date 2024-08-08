@@ -6,7 +6,17 @@ import cn from "classnames";
 import styles from "./Modal.module.sass";
 import Icon from "../Icon";
 
-const Modal = ({ outerClassName, visible, onClose, children }) => {
+const Modal = ({
+  outerClassName,
+  visible,
+  onClose,
+  children,
+}: {
+  outerClassName?: any;
+  visible?: any;
+  onClose?: any;
+  children?: any;
+}) => {
   const escFunction = useCallback(
     (e) => {
       if (e.keyCode === 27) {

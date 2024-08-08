@@ -4,7 +4,19 @@ import cn from "classnames";
 import styles from "./Dropdown.module.sass";
 import Icon from "../Icon";
 
-const Dropdown = ({ className, value, setValue, options, empty }) => {
+const Dropdown = ({
+  className,
+  value,
+  setValue,
+  options,
+  empty,
+}: {
+  className?: any;
+  value?: any;
+  setValue?: any;
+  options?: any;
+  empty?: any;
+}) => {
   const [visible, setVisible] = useState(false);
 
   const handleClick = (value) => {
@@ -31,7 +43,7 @@ const Dropdown = ({ className, value, setValue, options, empty }) => {
             className={cn(styles.option, {
               [styles.selectioned]: x === value,
             })}
-            onClick={() => handleClick(x, index)}
+            onClick={() => handleClick(x)}
             key={index}
           >
             {x}

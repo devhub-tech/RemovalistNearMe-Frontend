@@ -1,9 +1,22 @@
 import React from "react";
 import cn from "classnames";
 import styles from "./TextInput.module.sass";
+
 // import Icon from "../Icon";
 
-const TextInput = ({ className, label, empty, view, ...props }) => {
+const TextInput = ({
+  className,
+  label,
+  empty,
+  view,
+  ...props
+}: {
+  className?: any;
+  label?: any;
+  empty?: any;
+  view?: any;
+  [key: string]: any;
+}) => {
   return (
     <div
       className={cn(

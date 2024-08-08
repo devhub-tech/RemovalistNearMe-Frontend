@@ -1,19 +1,20 @@
 // features/auth/authSlice.js
-import { createSlice } from '@reduxjs/toolkit'
-import { LoginInitialState} from '../../../constants/types/auth'
-import { registerAction } from '../../actions/authAction/RegisterAction'
-import { LoginAction } from '../../actions/authAction/LoginAction'
+import { createSlice } from "@reduxjs/toolkit";
+import { LoginInitialState } from "../../../constants/types/auth";
+import { registerAction } from "../../actions/authAction/RegisterAction";
+import { LoginAction } from "../../actions/authAction/LoginAction";
+import { userInfo } from "os";
 
-const initialState:LoginInitialState = {
+const initialState: LoginInitialState = {
   loading: false,
   token: "", // for user object
   userInfo: {},
   error: null,
   success: false, // for monitoring the registration process.
-}
+};
 
 const loginSlice = createSlice({
-  name: 'Login',
+  name: "Login",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -22,19 +23,20 @@ const loginSlice = createSlice({
       state.error = null;
     });
     builder.addCase(LoginAction.fulfilled, (state, action) => {
-      console.log(action)
+      console.log(action);
       state.loading = false;
-      state.success= true;
+      state.success = true;
       state.token = action.payload.token;
-      state.userInfo=action.payload.user
-      localStorage.setItem("token" , action.payload.token)
+      state.userInfo = action.payload.user;
+      localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
     });
     builder.addCase(LoginAction.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.payload
-      state.success= false;
+      state.error = action.payload;
+      state.success = false;
     });
   },
-})
+});
 
-export default loginSlice.reducer
+export default loginSlice.reducer;

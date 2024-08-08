@@ -41,21 +41,21 @@ function SignInForm({
       [evt.target.name]: value,
     });
   };
-
+  console.log(userInfo);
   const handleOnSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
-    if (!state.username || !state.password) {
-      // setErrors((prevState) => ({
-      //   usernameError: state.username ? "" : "Email cannot be empty",
-      //   passwordError: state.password ? "" : "Password cannot be empty",
-      // }));
-    } else {
-      const payload: LoginPayload = {
-        username: state.username,
-        password: state.password,
-      };
-      dispatch(LoginAction(payload));
-    }
+    // evt.preventDefault();
+    // if (!state.username || !state.password) {
+    //   // setErrors((prevState) => ({
+    //   //   usernameError: state.username ? "" : "Email cannot be empty",
+    //   //   passwordError: state.password ? "" : "Password cannot be empty",
+    //   // }));
+    // } else {
+    //   const payload: LoginPayload = {
+    //     username: state.username,
+    //     password: state.password,
+    //   };
+    //   dispatch(LoginAction(payload));
+    // }
   };
 
   return (

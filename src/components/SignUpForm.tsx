@@ -85,37 +85,37 @@ function SignUpForm({
   };
 
   const handleOnSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
-    if (!isVerified && state.phone) {
-      const payload: VerifyOtpPayload = {
-        phone_number: state.phone,
-        otp:
-          state.otp1 +
-          state.otp2 +
-          state.otp3 +
-          state.otp4 +
-          state.otp5 +
-          state.otp6,
-      };
-      dispatch(verifyOtpAction(payload));
-    } else {
-      const payload: RegisterPayload = {
-        email: state.email,
-        password: state.password,
-        phone_number: state.phone,
-      };
-      console.log(payload);
-      dispatch(registerAction(payload));
-    }
+    // evt.preventDefault();
+    // if (!isVerified && state.phone) {
+    //   const payload: VerifyOtpPayload = {
+    //     phone_number: state.phone,
+    //     otp:
+    //       state.otp1 +
+    //       state.otp2 +
+    //       state.otp3 +
+    //       state.otp4 +
+    //       state.otp5 +
+    //       state.otp6,
+    //   };
+    //   dispatch(verifyOtpAction(payload));
+    // } else {
+    //   const payload: RegisterPayload = {
+    //     email: state.email,
+    //     password: state.password,
+    //     phone_number: state.phone,
+    //   };
+    //   console.log(payload);
+    //   dispatch(registerAction(payload));
+    // }
   };
 
   function handleSendOtp() {
-    if (state.phone) {
-      const payload: SendOtpPayload = {
-        phone_number: state.phone,
-      };
-      dispatch(SendOtpAction(payload));
-    }
+    // if (state.phone) {
+    //   const payload: SendOtpPayload = {
+    //     phone_number: state.phone,
+    //   };
+    //   dispatch(SendOtpAction(payload));
+    // }
   }
 
   return (
